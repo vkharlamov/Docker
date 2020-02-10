@@ -1,0 +1,20 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  db_my:
+    build: ./db
+    #image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234567
+    volumes:
+      - ./databases:/var/lib/mysql
+ 
+  adminer:
+    build: ./adminer
+    #image: adminer
+    restart: always
+    ports:
+      - 6080:8080
